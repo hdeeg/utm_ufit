@@ -1,7 +1,13 @@
 README for utm/ufit distribution    
-Last update: 27Mar2021
+Last update: 6Apr2021
 (see further historial at end)
-Ñ
+
+Short description of UTM to follow here
+
+
+
+
+
 This directory and its subdirectories contain the full UTM/UFIT distribution. 
 Its content is: 
 
@@ -20,7 +26,11 @@ In ADS:  Deeg 2014ascl.soft12003D
 
 
 ----
-Principal updates:
+Versions of UTM/UFIT until 20210327 (2021 March 27) are available at
+ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/
+The UTM/UFIT distro on that ftp server will not longer be updated and UTM versions posterior to 2021 March 27 will only be available at github.
+
+For reference, below a list with the principal updates prior to 2021 March 27:
 (For more detail, see _README files in the subdirectories and the headers of utm.pro, ufit.pro and other codes)
 
 The 20210327 release contains several major updates:
