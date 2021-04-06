@@ -1,0 +1,100 @@
+#simulation of double transit of Kepler 446 b and c, which occurs on 31 March 2015. 
+#A hypothetical starspot is added, approximated by two stellar rings around a point-like
+# planet.  Star and planet data are from Muirhead+ 2015. The time axis is in 
+# JD - 2454833, often used in Kepler data.
+# Execution of this setup requires presence (in same directory or in IDLPATH) of 
+# preprocessor program rpl_apl_prep.pro, which converts non-standard input 
+# parameters (Rpl/Rst,  a/Rst) into those accepted by UTM
+
+#HJD 4Feb 2015
+
+#preproc  rpl_apl_prep   #calcs absolute planet size and distance from rpl/rst and a/rst
+#saveprepset     0    #1: save preprocessed setupfile, 0: don't
+
+#general parameters
+sunit  Rstar    units for size
+tunit  day     unit for time
+lunit  Lstar    unit for luminosity
+munit  Msol    unit for mass
+
+
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+
+tflag	0	#0: generate time-points from tinit,tinc,tfin
+		#1: use timepoints given in file 'infilename
+		#2: add model to data given in file 'infilename'. 
+
+
+wflag  1       1: write lightcurve to file, 0: dont't do it
+lcfilename K446spot_sim.lc  #name of output lightcurve
+
+xpflag  0    #1: make final plot of x-positions, 0: don't
+plcflag  1    #1: make final plot of entire lightcurve, 0: don't
+lchead  n      #{y,n} write setupfile as header of output curve
+
+
+tinit  2280.62       initial time  (JD- 2454833)
+tfin   2280.68      final time
+tinc   0.0003	stepsize of time in units 'tunit'
+gsize  48       sidelength of 2D array representing bodies' geometric form.
+finestep 0      use finestepping (exprerimental) 
+limblaw quad     limbdarkening law: lin or quad, default is lin
+
+#below entries for the objects
+#star K446 vals from Muirhead 2015 Table4
+0type  star        type of object
+0radi  1.00           radius of object
+0mass  0.22        mass of obj
+0period  0.0   period; if 0.0 then is fixed
+0epoch   0.0   epoch
+0inclin  90        inclination of orbit;0=face-on, 90=edge-on
+0rdist   0       distance from coord. ctr
+0lum     1.00286         luminosity of object
+0limbd 0.447         limb-darkening coeficcient, for stars only
+0limbd2 0.353      2nd limb-darkening coeficcient, for quadrat law 
+
+#planet K446b
+1type  point        type of object
+1radi     0.0574  radius ratio (preproc param)
+1rdist   14.2          a/Rstar (prepoc param)
+1period  1.565409   period; if 0.0 then is fixed
+1epoch 132.9135       epoch in tunit
+1inclin  87.42        inclination of orbit;0=face-on, 90=edge-on
+#1inclin  85.42        inclination of orbit;0=face-on, 90=edge-on
+
+planet K446c
+2type  planet        type of object
+2radi  0.0424         radius of object
+2rdist   22.40       a/Rstar (prepoc param)
+2period  3.036179   period; if 0.0 then is fixed
+2epoch 134.069573       epoch in tunit
+2inclin  88.97        inclination of orbit;0=face-on, 90=edge-on
+
+#ref-pt for center of spot
+3type  point        type of object
+3rdist 1
+3period  1   period; if 0.0 then is fixed
+3phase  0.0       
+3inclin  60        inclination of orbit;0=face-on, 90=edge-on
+
+#star-spot 
+#define ring
+4type ring
+4radi  0.14       #in ring: outer radius
+4inclin  40        #inclination of ring; 0=face-on, 90=edge-on 
+4rdist   0.0001       #in ring: inner radius
+4mainobj 3   #associated central object
+4transp  0.9   #transparency of ring FACE-ON (at inclin=0), 0=opaque,1=transp
+
+#star-spot 
+#define ring
+5type ring
+5radi  0.08       #in ring: outer radius
+5inclin  40        #inclination of ring; 0=face-on, 90=edge-on 
+5rdist   0.0001       #in ring: inner radius
+5mainobj 3   #associated central object
+5transp  0.8   #transparency of ring FACE-ON (at inclin=0), 0=opaque,1=transp

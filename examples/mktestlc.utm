@@ -1,0 +1,54 @@
+#setupfile to produce a test-lightcurve for single star with 1 planet
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+
+gsize  24      #sidelength of 2D array representing bodies' geometric form.
+
+tflag	0	#0: generate time-points from tinit,tinc,tfin
+		#1: use timepoints given in file 'infilename
+		#2: add model to data given in file 'infilename'. 
+
+tinit  0
+tfin   0.4
+tinc   0.003	#stepsize of time in units 'tunit'
+
+plotorbflag 0    # 1: show, 0: hide plots with objects' orbital positions 
+#plcsimflag  1  #if 1, plot last 100 pts of lightcurve during simulation. 
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+onoise 0.001   #Gaussian noise to be added to output, units like oflag/lunit
+ooff 0.001  #adds an (arbitrary) offset to output after sim, units like oflag/lunit
+
+		
+wflag  1       #1: write output lightcurve to file, 0: dont't do it
+outlcname testtrans.lc  #name of output lightcurve
+
+
+limblaw lin    # limbdarkening law: lin, quad, root. default is lin
+#below entries for the objects
+#entries for first object
+0type  star        #type of object
+0radi  1         #radius of object
+0lum     1         #luminosity of object
+0limbd 0.6         #limb-darkening coeficcient, for stars only
+
+#entries for 1st object
+1type  planet        #type of object
+1radi  0.1         #radius of object
+1period  10.0   #period; if 0.0 then is fixed
+1trepoch 0.21   #epoch of transit
+1inclin   87       #inclination of orbit;0=face-on, 90=edge-on
+1rdist   10       #distance from coord. ctr
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+#setupfile for single star with 1 planet
+#short version with most common parameters for circular orbit
+
+tinit  0      # initial time
+tfin   0.2      #final time
+tinc   0.001	#stepsize of time in units 'tunit'
+gsize 32
+plotorbflag -1
+
+wflag  0       #1: write lightcurve to file, 0: dont't do it
+outlcname  transit_model.lc   #name of model-lightcurve
+
+#below entries for the objects
+#star
+0type  star        #type of object
+0radi  1        #(equatorial) radius of object
+0limbd  0.6    #first limb-darkening coeficcient, for stars only
+
+#planet
+1type  planet        #type of object
+1radi  0.1         #(equatorial) radius of object
+1period  4.0   #period; if 0.0 then is fixed
+1trepoch  0.1   #epoch of transit
+1rdist   10       #distance from coord. ctr
+1inclin  89       # inclination of orbit;0=face-on, 90=edge-on
+
+

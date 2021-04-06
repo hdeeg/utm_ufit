@@ -1,0 +1,34 @@
+# auto-saved setup file
+#Performs an MCMC fit of a sum of a linear and sine-function to data
+#It should reproduce approximately the values in table 2
+#of Deeg+, A&A 480, 563 (2008)
+model  ufit_polynome
+order  2
+c0  -1.5026629
+c1  0.0090629438
+c2  7.8833698e-07
+fit  c0
+fit  c1
+fit  c2
+scale  1
+scale  0.01
+scale  5e-8
+xunit  epoch
+yunit  O-C(sec)
+indatafile  OC9407_1clus.txt
+yerrflag  1
+showfinalfitflag  1
+fitalgo  mc
+pdrat  0.1
+chitol  1e-5
+ftol  1e-4
+mc_nchains  5
+mc_maxsteps  50000
+mc_getscale  1
+mc_dcmult  5
+mc_stopscale  0
+plcflag  -1
+amoeba_nmax_exceed  0
+amoeba_ncalls_done  56
+chisq         16.746541
+rms_res         3.2156837

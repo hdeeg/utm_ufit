@@ -1,0 +1,123 @@
+#setupfile for simulation/fit of triple HD144548.
+#Generates model and residuals (model-data) which are are close to (but not necessarily exactly the same) as Figs in 
+#Alonso et al. 2015.
+#invokes preprocessing program prep3linld.pro
+
+fit  2omegadot
+scale  0.005
+fit  2period
+scale  0.002
+fit  2ecepoch
+scale  0.001
+fit  2ecc
+scale  0.001
+fit  2inclin
+scale  0.1
+fit  radAa2
+scale  0.001
+fit  radBaa1
+scale  0.001
+fit  2limbd
+scale  0.15
+fit  3pa
+scale  1
+fit  qlbin12
+scale  0.005
+fit  k1
+scale  0.006
+
+#general paramas for ufit
+fitalgo am
+amoeba_ftol 3e-4  #am: stop param for amoeba
+amoeba_nmax  1000
+
+preproc  trip_prep3linld   #program to prepocess setupfile; outcomment or 0 for none
+
+saveprepset     1    #1: save preprocessed setupfile, 0: don't
+savenextf_in  0     #1: a second output setup-file f_in with incremented version
+				# number is generated. 0: not
+#general parameters
+sunit  Rsol    #units for size
+tunit  KBJD     #unit for time
+lunit  Flux    #unit for luminosity
+munit  Msol    #unit for mass
+
+inlcname HD144548eclips.lc  #input lightcurve
+meas_error 0.0017  #error of measurement
+
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+outlcname HD144548_resids.lc  #name of output lightcurve
+
+oflag  0        #0: output is system-luminosity
+                #1: output is a relative flux loss
+                #2: output are magnitude variations (set lunit to 'mag'!)
+
+
+tflag   3       #0: generate time-points from tinit,tinc,tfin
+                #1: use timepoints given in file 'infilename
+                #2: add model to data given in file 'infilename'. 
+                #3: like 2 but subtracts model
+
+
+
+xpflag  0    #1: make final plot of x-positions, 0: don't
+plcflag  1    #1: make final plot of entire lightcurve, 0: don't
+orbtrflag  1   #1: plot orbit traces in x-y, y-z planes, 0: don't
+#residlevel 0.45  #average level of residuals on y-axis in graphic display
+
+gsize  24       sidelength of 2D array representing bodies' geometric form.
+
+limblaw quad     limbdarkening law: lin or quad, default is lin
+
+#values used in prepocessor
+masstot        3.4 total mass entire system
+qmbin12 1.33  mass ratio binary 1 / compA
+qmbin1     1  mass ratio Bb/Ba in binary 1
+
+lumtot        1  total luminos entire system
+qlbin12 0.058394848   lum ratio  binary 1 / compA  
+qlbin1    0.97053864  lum ratio Bb/Ba in binary 1  
+
+radAa2   0.036353245   radius A over smaxis bin2  
+radBaa1  0.18324104  radius Ba over smaxis bin1  (1.17/6.186 from fit to bin1)
+k1   1.0110401         radius Bb / radius Ba  (from fit to bin1)
+
+
+#below entries for the objects
+
+#point to show coord ctr
+0type point
+
+#barycenter of binary 1
+1type point
+
+#primary A of bin2
+2type  star        #type of object
+2period 33.944674  period of outer binary
+2limbd  0.37598212       #limb-darkening coeficcient, for stars only
+2limbd2  0.0
+2ecepoch   2090.0685    #eclipse epoch
+2omega 127.6    #angle of periastron
+2ecc  0.26540573  #eccentricity
+2inclin  89.309577  #inclination
+2omegadot  0.023305700  #change in periastron angle  per time unit
+#2oblate 0.05  #oblateness
+
+# primary comp of bin1, Ba 
+3type  star        #type of object
+3period 1.6278   #period; if 0.0 then is fixed
+3ecepoch   2061.2610       #epoch
+3inclin  88.897039      #inclination of orbit;0=face-on, 90=edge-on
+3limbd 0.77597672         #limb-darkening coeficcient, for stars only
+3limbd2 0
+3ecc  0.0  #eccentricy
+3omega 0 #arg of periastron
+3mainobj 1 #relative to bin1 barycenter
+3pa     269.46164   #position angle
+
+
+# seconary comp of bin1, Bb
+4type  star        #type of object
+4mainobj 1 #relative to bin1 barycenter
+
+

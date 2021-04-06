@@ -1,0 +1,64 @@
+#test setupfile for Corot9b with saturn-like ring.
+#values from Deeg+2010 Nature 464, 384 ; with eccentric planet sim
+
+#general parameters
+sunit  Rstar    #units for size
+tunit  day     #unit for time
+lunit  Lstar    #unit for luminosity
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+lcfilename out.test  #name of output lightcurve
+
+
+plotorbflag 0    # 1/0: shows/suppresses plots with objects' orbital positions.
+orbtrflag 1     #1: plot traces in orbit plots., 0: plot current positons only
+xpflag  0       #1: make final plot of x-positions, 0: don't
+plcpflag  1     #1: make final plot of entire lightcurve, 0: don't
+
+oflag  0        #0: output is system-luminosity
+                #1: output is a relative flux loss
+                #2: output are magnitude variations (set lunit to 'mag'!)
+
+
+tflag   0       #0: generate time-points from tinit,tinc,tfin
+                #1: use timepoints given in file 'infilename
+                #2: add model to data given in file 'infilename'. 
+
+
+tinit  -0.4
+tfin   0.4
+tinc   0.002	stepsize of time in units 'tunit'
+gsize  96       sidelength of 2D array representing bodies' geometric form.
+limblaw lin     limbdarkening law: lin or quad, default is lin
+
+#below entries for the objects
+
+#entries for first object
+0type  star        #type of object
+0radi  1         #radius of object
+0lum     1         #luminosity of object
+0limbd 0.57         #limb-darkening coeficcient, for stars only
+#0limbd2 0.3       #2nd limb-darkening coeficcient, for quadrat law 
+
+#entries for 2nd object
+1type  planet        #type of object
+1radi  0.115         #radius of object in sunit
+1period  95.2738   #period in  tunit
+#1phase   -0.05   #posital phase [0-1]
+1trepoch 0       #epoch of transit in days
+1inclin  89.8        #inclination of orbit;0=face-on, 90=edge-on
+1rdist  93  #semi-major half-axes in sunit
+1ecc  0.11  #eccentricity
+1omega 217  #argument of periapsis omega in deg
+
+#define ring (scaled to plaen size from Saturn rings) 
+2mainobj  1   #associated central object
+2type ring
+2period 0
+2phase 0
+2radi  0.3       #in ring: outer radius
+2rdist   0.18       #in ring: inner radius
+2inclin  75       #inclination of ring; 0=face-on, 90=edge-on (64.6 is saturn max)
+2transp  0.8   #transmittance of ring; 0=opaque,1=transp
+2spinpa  0   #position angle of spin axis (from +y = North counterclockwise)
+
+

@@ -1,0 +1,105 @@
+#demonstration setup for 6 objects on unphysical orbits. 
+#binary star, with one planet each, of which one
+#has a moon and the other has a ring
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+
+tflag	0	#0: generate time-points from tinit,tinc,tfin
+		#1: use timepoints given in file 'infilename
+		#2: add model to data given in file 'infilename'. 
+
+infilename    none.lc #name of input file, not needed if tflag = 0
+orbtrflag 1   #1: plot traces in orbit plots., 0: plot current positons only
+
+
+wflag  0       #1: write lightcurve to file, 0: dont't do it
+outlcname out.test  #name of output lightcurve
+
+tinit  0.0
+tfin   10.5
+tinc   0.01	stepsize of time in units 'tunit'
+gsize  24       sidelength of 2D array representing bodies' geometric form.
+limblaw lin    # limbdarkening law: lin, quad, root. default is lin
+
+#below entries for the objects
+
+
+#entries for star object
+0type  star        #type of object
+0radi  0.5         #radius of object
+0mass  0.1        #mass of obj
+0period  2.0   #period; if 0.0 then is fixed
+0ecepoch  0   #epoch of eclipse
+0inclin  88        #inclination of orbit;0=face-on, 90=edge-on
+0rdist   3       #distance from coord. ctr
+0lum     1         #luminosity of object
+0limbd 0.5         #limb-darkening coeficcient, for stars only
+
+#entries for star object
+1type  star        #type of object
+1radi  0.25         #radius of object
+1mass  0.1        #mass of obj
+1period  2.0   #period; if 0.0 then is fixed
+1trepoch   0   #epoch of transit
+1inclin  88        #inclination of orbit;0=face-on, 90=edge-on
+1rdist   3       #distance from coord. ctr
+1lum   0.5         #luminosity of object
+1limbd 0.5         #limb-darkening coeficcient, for stars only
+
+#define planet
+2type  planet
+2radi  0.05         #radius of object
+2mass  0.001        #mass of obj
+2period  7.3   #period; if 0.0 then is fixed
+2phase   0.95   #posital phase [0-1]
+2inclin  90.0        #inclination of orbit; 0=face-on, 90=edge-on
+2rdist   1.0       #distance from coord. ctr
+2mainobj 0  #number of associated central object
+
+#define moon
+3type moon
+3radi  0.03
+3mass  0.0005        #mass of obj
+3period  1.1
+3phase 0.25
+3inclin  45.0        #inclination of orbit; 0=face-on, 90=edge-on
+3rdist   0.15       #distance from coord. ctr
+3mainobj  2   #number of associated central object
+
+#define planet
+4type  planet
+4radi  0.02         #radius of object
+4mass  0.001        #mass of obj
+4period  4.1   #period; if 0.0 then is fixed
+4phase   0.70   #posital phase [0-1]
+4inclin  90.0        #inclination of orbit; 0=face-on, 90=edge-on
+4rdist   4.0       #distance from coord. ctr
+4mainobj 1  #number of associated central object
+
+#define ring
+5type ring
+5radi  0.1       #in ring: outer radius
+5mass  0.0002
+5period  0
+5phase 0.0
+5inclin  30        #inclination of ring; 0=face-on, 90=edge-on 
+5rdist   0.04       #in ring: inner radius
+5mainobj  4   #associated central object
+5transp  0.8   #transparency of ring FACE-ON (at inclin=0), 0=opaque,1=transp
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+#setupfile for single, oblate star with a planet on eccentric orbit
+#verbose version in which many parameters are mentioned even
+#if they have defaults with the same values
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+
+
+tflag  	       0 #0: generate time-points from tinit,tinc,tfin
+			 #1: use time-points given in file 'inlcname
+			 #2: add model to data given in file 'inlcname'. 
+			#3: like 2 but subtracts model
+
+tinit  -0.1      # initial time
+tfin   4.6      #final time
+tinc   0.0025	#stepsize of time in units 'tunit'
+
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+outlcname  transit_eccentric.lc   #name of model-lightcurve
+lchead  1   #write setupfile as header of output curve (only if wflag =1)
+
+plcflag  1      #1/0: shows/suppresses  final interactive plot of model. Overrides dflag
+plcsimflag  0   #1/0: shows/suppresses last 100 pts of model during simulation. Overrides dflag
+plotorbflag 1    # 1/0: shows/suppresses plots with objects' orbital positions. Overrides dflag
+orbtrflag 1   #1: plot traces in orbit plots., 0: plot current positons only
+xpflag 0    #if 1: make final plot of x-positions
+
+gsize  36       #sidelength of 2D array representing bodies' geometric form.
+limblaw quad    # limbdarkening law: lin, quad, root. default is lin
+ 
+contlum  0 #adds additional (contaminating) non-transiting 'third-light'
+			#lightsource, units like oflag/lunit
+ooff  0       #adds an offset to output after sim,  units like oflag/lunit
+onoise  0    #Gaussian noise to be added to output, units like oflag/lunit
+
+#below entries for the objects
+#star
+0type  star        #type of object
+0radi  1        #(equatorial) radius of object
+0period  0.0   #period; if 0.0 then is fixed
+0rdist 0.       #orbital semimajor axis
+0lum  1         #luminosity of object, in units of 'lunit'
+0limbd  0.3    #first limb-darkening coeficcient, for stars only
+0limbd2  0.3   #second limb-darkening coeficcient,  only used for quad or root law
+0oblate  0.1    #oblateness = (radi - Rpolar)/radi, were radi is the equatorial radius
+0spinpa  30  #pos. angle of the spin-axis in degree, from 0=North (+y) to East (-x). 
+				#Only used if oblate <> 0.0
+
+#planet
+1type  planet        #type of object
+1radi  0.1         #(equatorial) radius of object
+1period  4.0   #period; if 0.0 then is fixed
+1trepoch  0.2   #epoch of transit
+1inclin  87       # inclination of orbit;0=face-on, 90=edge-on
+1rdist   10       #distance from coord. ctr
+1ecc  0.4   #orbital eccentricty
+1omega  280   #arg. of periapsis or periastron angle in degree (default 270)
+1omegadot  0   #change of omega in degree per time-unit
+1pa  280   #long. of ascending node resp. position angle in degree (default 270)
+
+

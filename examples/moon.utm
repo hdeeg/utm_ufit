@@ -1,0 +1,71 @@
+#demonstration setup for a star with a planet with a moon 
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+munit  Msol    #unti for mass
+
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+
+tflag	0	#0: generate time-points from tinit,tinc,tfin
+		#1: use timepoints given in file 'infilename
+		#2: add model to data given in file 'infilename'. 
+
+infilename    none.lc #name of input file, not needed if tflag = 0
+
+
+
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+outlcname moon.lc  #name of output lightcurve
+
+
+tinit  500.0
+tfin   500.2
+tinc   0.002	stepsize of time in units 'tunit'
+gsize  48       sidelength of 2D array representing bodies' geometric form.
+
+limblaw lin    # limbdarkening law: lin, quad, root. default is lin
+
+#below entries for the objects
+
+
+#entries for star object
+0type  star        #type of object
+0radi  0.5         #radius of object
+0mass  0.1        #mass of obj
+0period  2.0   #period; if 0.0 then is fixed
+0phase   0.4   #posital phase [0-1]
+0inclin  85        #inclination of orbit;0=face-on, 90=edge-on
+0rdist   0      #distance from coord. ctr
+0lum     1         #luminosity of object
+0limbd 0.6         #limb-darkening coeficcient, for stars only
+
+#define planet
+1type  planet
+1radi  0.08         #radius of object
+1mass  0.001        #mass of obj
+1period  7.3   #period; if 0.0 then is fixed
+1phase   0.985   #posital phase [0-1]
+1inclin  91.5        #inclination of orbit; 0=face-on, 90=edge-on
+1rdist   10.0       #distance from coord. ctr
+
+
+#define moon
+2type moon
+2radi  0.03
+2mass  0.0005        #mass of obj
+2period  1.1
+2phase 0.1
+2inclin  45        #inclination of orbit; 0=face-on, 90=edge-on
+2rdist   0.25       #distance from coord. ctr
+2mainobj  1   #number of associated central object
+
+
+
+
+

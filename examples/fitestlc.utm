@@ -1,0 +1,75 @@
+#demonstration setup file for ufit
+#
+#this fits demo-lightcurves created by a previous run of
+# utm,'mktestlc.utm',2
+
+#params to be fitted
+fit 1radi
+scale 0.01
+fit 1trepoch
+scale 0.02
+fit 1inclin
+scale 2
+fit ooff
+scale 0.005
+#fit 1rdist
+#scale 1
+
+meas_error 0.001   #measurement-error of the data-points that are fitted
+
+# params for ufit
+fitalgo  am  #method selector: lm: Levenberg-Marquardt, am: AMOEBA (default)
+amoeba_ftol  1e-3   #AM: stop param for amoeba. See IDL help on AMOEBA  
+amoeba_nmax  200  #AM: maximum number of calls to Amoeba
+
+
+savenextf_in  0   #1: a second output setup-file with incremented version
+				# number is generated. 0: not. 
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+
+residlevel  0.98   #average level of residuals on y-axis in graphic display.
+showfinalfitflag 1  #1/0: shows/suppresses a final interactive plot with fitted model.
+
+gsize  24      #sidelength of 2D array representing bodies' geometric form.
+
+tflag	1	#0: generate time-points from tinit,tinc,tfin
+		#1: use timepoints given in file 'infilename
+		#2: add model to data given in file 'infilename'. 
+
+infilename testtrans.lc #name of input file, not needed if tflag = 0
+
+oflag  0        #0: output/input is system-luminosity
+		#1: output/input is a relative flux loss
+		#2: output/input are magnitude variations (set lunit to 'mag'!)
+
+#onoise 0.001     #noise to be added to output, in unit of oflag/lunit 
+ooff  0.   #adds an offset to output after sim, units like oflag/lunit
+		
+wflag  1       #1: write output lightcurve to file, 0: dont't do it
+
+plcflag 1     #1/0: shows/suppresses  final interactive plot of model. Overrides dflag
+
+limblaw lin    # limbdarkening law: lin, quad, root. default is lin
+#below entries for the objects
+#entries for first object
+0type  star        #type of object
+0radi  1         #radius of object
+0lum     1         #luminosity of object
+0limbd 0.6         #limb-darkening coeficcient, for stars only
+
+#entries for 1st object
+1type  planet        #type of object
+1radi  0.11         #radius of object
+1period  10.0   #period; if 0.0 then is fixed
+1trepoch 0.2   #epoch of transit
+1inclin   85       #inclination of orbit;0=face-on, 90=edge-on
+1rdist   10       #distance from coord. ctr
+
+
+
+
+
+

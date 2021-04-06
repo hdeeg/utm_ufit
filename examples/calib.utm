@@ -1,0 +1,65 @@
+#this setupfile is used to evaluate the precision
+#of the brightness calculation. It calculates a transit staring at its center
+#The star's limbdarkening is set to 0 for a uniform disk
+#best use with dflag 1  (to see flux-values)
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit for luminosity
+
+oflag  1           #0: output/input is given as system-luminosity
+			 #1: output/input is given as relative flux loss
+			 #2: output/input is given as magnitude variations
+
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+outlcname calib.lc  #name of output lightcurve
+lchead  1    #write setupfile as header of output curve (only if wflag =1)
+plcflag  1    #1: make final plot of entire lightcurve, 0: don't
+plcsimflag  0 #shows/suppresses last 100 pts of model during simulation. Overrides dflag
+plotorbflag 0 #shows/suppresses plots with objects' orbital positions. Overrides dflag
+
+
+
+tinit  0
+tfin   0.08
+tinc   0.0025	stepsize of time in units 'tunit'
+gsize  12       sidelength of 2D array representing bodies' geometric form.
+
+limblaw lin    # limbdarkening law: lin, quad, root. default is lin
+
+#below entries for the objects
+
+
+#entries for first object
+0type  star        #type of object
+0radi  1         #radius of object
+0period  0.0   #period; if 0.0 then is fixed
+0phase   0.0   #posital phase [0-1]
+0inclin  90        #inclination of orbit;0=face-on, 90=edge-on
+0rdist   0       #distance from coord. ctr
+0lum     1         #luminosity of object
+0limbd 0.0         #limb-darkening coeficcient, for stars only
+
+#entries for 1st object
+1type  planet        #type of object
+1radi  0.1         #radius of object
+1period  1.0   #period; if 0.0 then is fixed
+1phase   0   #posital phase [0-1]
+1inclin  90        #inclination of orbit;0=face-on, 90=edge-on
+1rdist   5       #distance from coord. ctr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

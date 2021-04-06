@@ -1,0 +1,50 @@
+#setupfile for Earth Sun transit
+# demo for employing a setupfile prepocessing program, here kepler_prep, which 
+# calculates 1rdist from 1period and from 0mass
+ 
+preproc  kepler_prep   #opt. program to prepocess setupfile; outcomment or 0 for none
+saveprepset     1    #1: save preprocessed setupfile, 0: don't
+
+#general parameters
+sunit  Rsol    #units for size
+tunit  day     #unit for time
+lunit  Lsol    #unit fory luminosity
+munit  Msol    #unit for mass
+
+wflag  1       #1: write lightcurve to file, 0: dont't do it
+outlcname earth_sun_transit.lc  #name of output lightcurve
+plcflag  1    #1: make final plot of entire lightcurve, 0: don't
+
+oflag  1        #0: output is system-luminosity
+                #1: output is a relative flux loss
+                #2: output are magnitude variations (set lunit to 'mag'!)
+
+tflag 0
+tinit  0
+tfin   1
+tinc   0.01	stepsize of time in units 'tunit'
+gsize  48       sidelength of 2D array representing bodies' geometric form.
+limblaw lin     limbdarkening law: lin or quad, default is lin
+
+#below entries for the objects
+
+
+#entries for first object
+0type  star        #type of object
+0radi  1         #radius of object
+0mass  1        #mass of obj
+0lum     1         #luminosity of object
+0limbd 0.5         #limb-darkening coefficient, for stars only
+
+#entries for 2nd object
+1type  planet        #type of object
+1radi  0.0092        #radius of object  (Earth in Rsol)
+1period  365.0   #period; if 0.0 then is fixed
+1trepoch 0.5       #transit-epoch in tunit
+1inclin  90        #inclination of orbit;0=face-on, 90=edge-on
+
+
+
+
+
+

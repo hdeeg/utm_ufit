@@ -1,0 +1,57 @@
+#test for resampling. Generates 5 equidistant points around each time-step (here given by tinc). Try with resample 5 or resample 0, and with/without keep_resample, to see difference, and best with dflag =1. 
+#With keep_resample 0 (default),  the interactive graph will show the final model (averaged from the resampled curve), while the running window will show the resampled model.
+
+#general parameters
+sunit  Rsol    units for size
+tunit  day     unit for time
+lunit  Lsol    unit for luminosity
+munit  Msol    unit for mass
+
+wflag  1       1: write lightcurve to file, 0: dont't do it
+tflag 0
+tinit  0       initial time
+tfin   0.2      final time
+tinc   0.02043	stepsize of time in units 'tunit'
+resample 5  resample factor
+#resample 0  resample factor
+
+sample_span 0.02043  #the time-span over which the lightcurve is being resampled
+keep_resample 0  #if 1, the UTM output will be the resampled (higher time-res.) lightcurve. 
+
+plcsimflag  1   #1/0: shows/suppresses last 100 pts of model during simulation. 
+
+
+gsize  24       sidelength of 2D array representing bodies' geometric form.
+limblaw quad     limbdarkening law: lin or quad, default is lin
+
+
+oflag  0        #0: output is system-luminosity
+		#1: output is a relative flux loss
+		#2: output are magnitude variations (set lunit to 'mag'!)
+
+
+#below entries for the objects
+#star
+0type  star        type of object
+0radi  1        radius of object
+0period  0.0   period; if 0.0 then is fixed
+0rdist 0.
+0epoch 0.
+0lum     1         luminosity of object
+0limbd 0.8        limb-darkening coeficcient, for stars only
+0limbd2 0.0       2nd limb-darkening coeficcient, for quadrat law 
+0oblate 0
+0spinpa  -30
+
+#planet
+1type  planet        type of object
+1radi  0.05         radius of object
+1mass  0.1        mass of obj
+1period  2.0   period; if 0.0 then is fixed
+1trepoch 0.0
+1inclin  87        inclination of orbit;0=face-on, 90=edge-on
+1rdist   5       distance from coord. ctr
+
+#1pa     15      clockwise angle from +y axis
+
+

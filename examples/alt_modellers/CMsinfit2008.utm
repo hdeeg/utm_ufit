@@ -1,0 +1,39 @@
+# auto-saved setup file
+#Performs an MCMC fit of a sum of a linear and sine-function to data.
+#It should reproduce approximately the values in table 2
+#of Deeg+, A&A 480, 563 (2008)
+
+model  ufit_lin_sine
+k0  7.3983133
+k1  0.0054927429
+kd  9.2290354
+kphi  0.0012123803
+phi0  4.1142749
+fit  k0
+fit  k1
+fit  kd
+fit  kphi
+fit  phi0
+scale  1
+scale  0.01
+scale  2
+scale  0.001
+scale  0.2
+xunit  epoch
+yunit  O-C(sec)
+indatafile  OC9407_1clus.txt
+yerrflag  1
+showfinalfitflag  1
+fitalgo  mc
+pdrat  0.1
+chitol  1e-5
+ftol  1e-4
+mc_nchains  10
+mc_maxsteps  100000
+mc_getscale  1
+mc_dcmult  5
+mc_stopscale  0
+amoeba_nmax_exceed  0
+amoeba_ncalls_done  84
+chisq         7.5036115
+rms_res         2.3465769

@@ -1,0 +1,39 @@
+#setupfile for single star with external test-object
+#short version with most common parameters for circular orbit
+tunit day
+lunit lsun
+sunit Rsun
+
+tinit  -22      # initial time
+tfin   22      #final time
+tinc   0.1	#stepsize of time in units 'tunit'
+
+gsize 32
+finestep 0
+wflag  0       #1: write lightcurve to file, 0: dont't do it
+outlcname  model.lc   #name of model-lightcurve
+oflag 0
+plotorbflag -1
+plcsimflag 0
+
+#below entries for the objects
+#star
+0type  star        #type of object
+0radi  1        #(equatorial) radius of object
+0limbd  0.6    #first limb-darkening coeficcient, for stars only
+
+#extocc
+1type  extocc        #type of object
+1extname sqarr.sav 
+1period  400.0   #period; if 0.0 then is fixed
+1trepoch  0   #epoch of transit
+1rdist   10       #distance from coord. ctr
+1inclin  89      # inclination of orbit;0=face-on, 90=edge-on
+1sizex  4       #length of object in X,  in length-units
+1sizey  0.5         #lenght in Y
+1bctrx   0.5    #barycenter of obj in X in relative units
+1bctry   0.5     #barycenter of obj in Y .; from lower left corner
+1spinpa   0     #rotation of object from N towards E
+#1pa 280
+
+
