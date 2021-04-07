@@ -17,7 +17,7 @@ Its content is:
 
 /examples       Files requires for a variety of example runs of UTM or UFIT
 
-For more details, see _README files in the subdirectories
+For more details, see README files in the subdirectories
 
 --
 Citing UTM or UFIT: The preferred way is through its entry in the Astrophysics source code library 
@@ -26,7 +26,7 @@ In ADS:  Deeg 2014ascl.soft12003D
 
 
 ----
-Versions of UTM/UFIT until 20210327 (2021 March 27) are available at
+Prior versions of UTM/UFIT until version20210327 (2021 March 27) are available at
 ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/
 The UTM/UFIT distro on that ftp server will not longer be updated and UTM versions posterior to 2021 March 27 will only be available at github.
 
