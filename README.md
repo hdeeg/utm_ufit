@@ -12,9 +12,7 @@ This directory and its subdirectories contain the full UTM/UFIT distribution.
 Its content is: 
 
 /code   All required IDL code  
-
 /documentation      Documentation of UTM/UFIT 
-
 /examples       Files requires for a variety of example runs of UTM or UFIT
 
 For more details, see _README files in the subdirectories
