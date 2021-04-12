@@ -8,9 +8,9 @@ UTM/UFIT is written in IDL, and is released under the GNU General Public License
 
 ## Package Content
 The subdirectories are: 
-/code   All required IDL code  
-/documentation      Documentation of UTM/UFIT 
-/examples       Files requires for a variety of example runs of UTM or UFIT
+`/code`   All required IDL code  
+`/documentation`      Documentation of UTM/UFIT 
+`/examples`       Files requires for a variety of example runs of UTM or UFIT
 
 For more details, see README files in the subdirectories
 
@@ -69,7 +69,7 @@ The authors thanks Prof. Jean Schneider, who proposed a transit modeller and fit
 ### Repository of earlier UTM/UFIT versions
 UTM/UFIT versions until 20210327 (2021 March 27) are available at
 [ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/](ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/)
-The UTM/UFIT distribution on that ftp server will not longer be updated and UTM versions posterior to 2021 March 27 will only be available here on github.
+The UTM/UFIT distribution on that ftp server will no longer be updated and UTM versions posterior to 2021 March 27 will only be available here on github.
 
 
 
