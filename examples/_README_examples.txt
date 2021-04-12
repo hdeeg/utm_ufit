@@ -4,7 +4,7 @@ This directory contains example setups and (in some cases) the required data and
 
 *_prep.pro  are preprocessor files  (for use, see kepler_earth_sun.utm  or K446spot.utm)
 
-mktestlc.utm and fitest.utm: Basic fit with UFUT, see the fitting example in the UFIT documentation.
+mktestlc.utm and fitest.utm: Basic fit with UFIT, see the fitting example in the UFIT documentation.
 
 EBfit : example of a model fit to an eccentric binary from TESS data
 

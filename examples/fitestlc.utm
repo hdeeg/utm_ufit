@@ -18,12 +18,20 @@ scale 0.005
 meas_error 0.001   #measurement-error of the data-points that are fitted
 
 # params for ufit
-fitalgo  am  #method selector: lm: Levenberg-Marquardt, am: AMOEBA (default)
+fitalgo  am  #method selector: am: AMOEBA (default)
+#fitalgo  mc #method selector: mc MCMC  
+
+#AM fit params
 amoeba_ftol  1e-3   #AM: stop param for amoeba. See IDL help on AMOEBA  
 amoeba_nmax  200  #AM: maximum number of calls to Amoeba
 
+#MCMC params
+mc_nchains  5
+mc_maxsteps  5000
+mc_getscale  1
+mc_dcmult  5
 
-savenextf_in  0   #1: a second output setup-file with incremented version
+savenextf_in  1   #1: a second output setup-file with incremented version
 				# number is generated. 0: not. 
 #general parameters
 sunit  Rsol    #units for size
@@ -31,7 +39,6 @@ tunit  day     #unit for time
 lunit  Lsol    #unit for luminosity
 
 residlevel  0.98   #average level of residuals on y-axis in graphic display.
-showfinalfitflag 1  #1/0: shows/suppresses a final interactive plot with fitted model.
 
 gsize  24      #sidelength of 2D array representing bodies' geometric form.
 
@@ -50,7 +57,7 @@ ooff  0.   #adds an offset to output after sim, units like oflag/lunit
 		
 wflag  1       #1: write output lightcurve to file, 0: dont't do it
 
-plcflag 1     #1/0: shows/suppresses  final interactive plot of model. Overrides dflag
+plcflag 0     #1/0: shows/suppresses  final interactive plot of model. Overrides dflag
 
 limblaw lin    # limbdarkening law: lin, quad, root. default is lin
 #below entries for the objects

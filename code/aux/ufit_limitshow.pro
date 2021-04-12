@@ -15,6 +15,7 @@ pro ufit_limitshow, setupfile,mcsavfile,nshow=nshow,nxmod=nxmod,plotxdat=plotxda
   
 ;HJD 28jul2020, mostly glued together from ufit_mcshow and from ufit itself.
 ;     6feb2021 fixed bug in labelling of plot axes
+;    12apr2021 forced all utm plotting flags to be turned off
 
 ;example use: IDL> ufit_limitshow,'polyfit.fout1.utm','polyfit.mc1.sav',nshow=50,sigma=2
 
@@ -201,6 +202,14 @@ pro ufit_limitshow, setupfile,mcsavfile,nshow=nshow,nxmod=nxmod,plotxdat=plotxda
      for j=0,npar-1 do begin    ; assign paramters
         paraput,fitparname[j],j_pars[j,i]
      endfor
+
+if model eq 'utm' then begin ;supress any plotting
+paradd,'plcflag',-1 
+paradd,'plcsimflag',-1 
+paradd,'plotorbflag',-1 
+paradd,'dispstarflag',-1
+paradd,'xpflag',0 
+endif
      savesetupfile,fitsetmp
      call_procedure,model,fitsetmp,0,xmod,ymod
      if i eq 0 then over =0 else over=1
