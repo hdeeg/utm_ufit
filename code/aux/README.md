@@ -4,7 +4,7 @@ This directory contains additional programs with varying degress of polishedness
 
 - ufitrandomrep.pro :  runs UFIT repeatedly with random offsets of initial values. Typically used for AMOEBA fits. 
 
--ufitloop.pro : example of a wrapper that steps UFIT through a set of initial values; (in this case, the parameter 1radi).  Needs modification for any use.
+- ufitloop.pro : example of a wrapper that steps UFIT through a set of initial values; (in this case, the parameter 1radi).  Needs modification for any use.
 
 - utmparplot.pro :  reads a list of .utm setupfiles and displays distributions and correlations of selected parameters.  Intended to interpret sequences of  output (.fout ) setup-files from ufitrandomrep.pro  or ufitloop.pro. 
 
@@ -31,5 +31,4 @@ This directory contains additional programs with varying degress of polishedness
 - mcextract.pro  ;template code to extract some specific param-values from mc.sav file
 
 - rdtab.pro : A flexible reader for alphanumeric tables extracting up to 30 columns
-
-/modellers: Modelling routines that can be invoked by UFIT instead of UTM. 
+
