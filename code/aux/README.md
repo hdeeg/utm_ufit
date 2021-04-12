@@ -1,15 +1,6 @@
 README for UTM/UFIT aux subdirectory.
 
-This directory contains additional programs with varying degress of polishedness that may be useful for running UTM/UFIT, or for the interpretation of UFIT results. These programs may need modification to adapt to specific needs; see program headers.
-
-- ufitrandomrep.pro :  runs UFIT repeatedly with random offsets of initial values. Typically used for AMOEBA fits. 
-
-- ufitloop.pro : example of a wrapper that steps UFIT through a set of initial values; (in this case, the parameter 1radi).  Needs modification for any use.
-
-- utmparplot.pro :  reads a list of .utm setupfiles and displays distributions and correlations of selected parameters.  Intended to interpret sequences of  output (.fout ) setup-files from ufitrandomrep.pro  or ufitloop.pro. 
-
-- rdutmpar.pro : reads a list of .utm setupfiles and saves selected paramters to text file (.csv format), for reading into Excel or similar. Intended for output (.fout setup-files) from ufitrandomrep.pro 
-
+This directory contains additional programs with varying degress of polishedness that may be useful for running UTM/UFIT, or for the interpretation of UFIT results. See the codes for keyword options
 
 - ufit_mcshow.pro : displays .sav output file from MCMC runs of UFIT. Will show temporal evolution of a selected parameter and generates plots of distributions and correlations of the free parameters. This program calls the following ones in sequence:
 
@@ -23,12 +14,21 @@ This directory contains additional programs with varying degress of polishedness
 
     - ufit_exofast_errell : Routine needed by scattermatrix.pro (gives the path of the error ellipses at constant probability given two parameter distributions.)
 
-- ufit_limitshow: reads a setupfile and the correspoding .mc.sav output from an MCMC run and plots an overlay with all models with a chi-square within 1 (=1sigma) of the best fit. 
+- ufit_limitshow: reads a setupfile and the correspoding .mc.sav output from an MCMC run and plots an overlay with all models with a chi-square within 1 (=1sigma, modifyable with /sigma keyword) of the best fit. 
 
+
+- rdtab.pro : A flexible reader for alphanumeric tables extracting up to 30 columns, used frequently in my codes
+
+The following programs may need modification to adapt to specific needs; see program headers.
 
 - ufit_mccomb.pro : Combines mc.sav output files from several MCMC runs of UFIT. 
 
-- mcextract.pro  ;template code to extract some specific param-values from mc.sav file
+- mcextract.pro  :template code to extract some specific parameter-values from mc.sav file
 
-- rdtab.pro : A flexible reader for alphanumeric tables extracting up to 30 columns
-
+- ufitrandomrep.pro :  runs UFIT repeatedly with random offsets of initial values. Typically used for AMOEBA fits. 
+
+- ufitloop.pro : example of a wrapper that steps UFIT through a set of initial values; (in this case, the parameter 1radi).  Needs modification for any use.
+
+- utmparplot.pro :  reads a list of .utm setupfiles and displays distributions and correlations of selected parameters.  Intended to interpret sequences of  output (.fout ) setup-files from ufitrandomrep.pro  or ufitloop.pro. 
+
+- rdutmpar.pro : reads a list of .utm setupfiles and saves selected paramters to text file (.csv format), for reading into Excel or similar. Intended for output (.fout setup-files) from ufitrandomrep.pro 

@@ -29,14 +29,14 @@ chisq (priors)     :      0.96756732
 chisq (total)      :       28.434273
 ------------------------ufit finished-------------------------
 ````
-IDL> ufit,'noprior.utm',2,/nofit\  
+IDL> ufit,'noprior.utm',2,/nofit  
 Is like above, but without priors. The last two lines in above output will be missing (the total chisq is now the value indicated in 'chisq (all pts)'
 
 Without the /nofit keyword, a very short MCMC run will be initiated.
-For a useful MCMC run, give larger values to these setup parameters:\
-mc_nchains  (e.g 10 resp. twice the number of fit-parameters)\ 
-and\
-mc_maxsteps  (e.g 1000, better 5000)\
+For a useful MCMC run, give larger values to these setup parameters:  
+mc_nchains  (e.g 10 resp. twice the number of fit-parameters)  
+and  
+mc_maxsteps  (e.g 1000, better 5000)
 
 
 
