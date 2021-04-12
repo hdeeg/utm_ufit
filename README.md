@@ -8,9 +8,9 @@ UTM/UFIT is written in IDL, and is released under the GNU General Public License
 
 ## Package Content
 The subdirectories are: 
-`/code`   All required IDL code  
-`/documentation`      Documentation of UTM/UFIT 
-`/examples`       Files requires for a variety of example runs of UTM or UFIT
+- `/code`                        All required IDL code  
+- `/documentation`      Documentation of UTM/UFIT 
+- `/examples`                Files for a variety of example runs of UTM or UFIT
 
 For more details, see README files in the subdirectories
 
