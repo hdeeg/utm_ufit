@@ -1,14 +1,12 @@
-README for utm/ufit distribution    
-Last update: 12Apr2021
-(see further historial at end)
+# UTM/UFIT Universal Transit Modeller and Universal Fitter
 
-Short description of UTM to follow here
+UTM (Universal Transit Modeller)) is a highly flexible light-curve simulator for all kinds of mutual transits or eclipses between arbitrary numbers or stars, planets, moons, planetary rings, on Keplerian orbits that may be hierarchical and may include osculating elements. Common limb darkening laws are provided, and oblique object shapes or star-spots may be modelled as well. Resampling for the analysis of slowly sampled light curves and the modelling of different types of out-of-transit brightness variations is also possible. All input parameters are provided in setup-files. Short codelets permit the adaptation to any parameter set used in the modelling of transits or eclipses. Transit fluxes are calculated with analytical routines from EXOFAST (by Jason Eastman) or through pixelized object representations; by default, UTM selects automatically the appropriate calculation mode. UTM provides configurable textual and graphical output, with optional animations of transit events. 
 
+UFIT (Universal Fitter) is a fitter for UTM with an interface for alternative modellers; some examples are provided. UFIT can fit any parameter that is specifiable to the modeller, and uniform or gaussian priors may be given. Fitting may be done with AMOEBA or with an MCMC routine based on EXOFAST. UFIT's best-fit parameters are written to setup-files with an identical format as the input to UTM or UFIT. These can be used in further invocations of UFIT, with a versioning that facilitates the documentation of the work performed. Several levels of graphical and printed output can be specified. For the MCMC output, analysis routines are provided which generate corner and distribution plots and several statistical indicators.
 
+UTM/UFIT is written in IDL, and is released under the GNU General Public License. A thorough set of documentation is included, together with numerous applications examples. 
 
-
-
-##Package Content
+## Package Content
 The subdirectories are: 
 /code   All required IDL code  
 /documentation      Documentation of UTM/UFIT 
@@ -17,7 +15,7 @@ The subdirectories are:
 For more details, see README files in the subdirectories
 
 
-##Installation:
+## Installation:
 IDL Version 8.0 or higher is required. The code does not work with GDL.
 
 As the root for the UTM/UFIT install, create a directory that is either:
@@ -29,7 +27,7 @@ As the root for the UTM/UFIT install, create a directory that is either:
 
 Either download the ZIP file (see green 'Code' button) or clone this github repositary in your newly created directory. If you download the ZIP, it gets expanded into a directory named `utm_ufit-master`. You should then move the content of the `code` subdirectory into the previously created directory.
 
-##Getting started:
+## Getting started:
 `cd` to the `examples` directory, start the IDL command line, and run UTM with any of the `.utm` setup-files provided, e.g.
 `IDL> utm,'ring.utm',3 `         where `3` controls the level of display.
 
@@ -59,35 +57,19 @@ and generate a plot with the model lightcurve's 1-sigma uncertainty relative to 
 
 The further study of some of the setup-files in conjunction with the UTM and UFIT manuals (`documentation/utm_doc.txt` and `ufit_doc.rtf`) is then recommended.
 
---
-##Citing UTM or UFIT: The preferred way is through its entry in the Astrophysics source code library 
-at `http://ascl.net/1412.003` 
-In ADS:  `Deeg 2014ascl.soft12003D`  
+## Citing UTM or UFIT
+The preferred way is through its [entry in the Astrophysics source code library](https://ascl.net/1412.003):
+ `Deeg, H. 2014, Astrophysics Source Code Library, record ascl:1412.003`
+  
+Entry in ADS: [ `2014ascl.soft12003D` ](https://ui.adsabs.harvard.edu/abs/2014ascl.soft12003D) 
 
+### Acknowledgement
+The authors thanks Prof. Jean Schneider, who proposed a transit modeller and fitter for multiple objects as a project for a stay of the author at Paris Observatory in 1999, where the initial version of UTM was written.  
 
-----
-Prior versions of UTM/UFIT until version20210327 (2021 March 27) are available at
-ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/
-The UTM/UFIT distro on that ftp server will not longer be updated and UTM versions posterior to 2021 March 27 will only be available at github.
-
-For reference, below a list with the principal updates prior to 2021 March 27:
-(For more detail, see _README files in the subdirectories and the headers of utm.pro, ufit.pro and other codes)
-
-The 20210327 release contains several major updates:
-- UTM uses now by default a hybrid calculation of the transit flux that is pixel-based or analytical, depending on the circumstances.
-- UFIT permits the specification of uniform or gaussian priors to any parameter
-- the directory-structure of the UTM/UFIT distributions has been re-organized. All code is now in the /code subdirectory
-
-The 20151201 release increases the speed of UTM by several times and provides improved precision of the transit calculations.
-
-The 20150917 release is a major update, for UTM.PRO, UFIT.PRO, documentation and examples. The principal improvements are:  
-- All bodies can now be placed on arbitrarily orientated eccentric orbits; 
-- All types of bodies can be orbiting other ones; 
-- Interactive display of final model.
-- UFIT uses AMOEBA fit as default and permits generation of MCMC chains. 
-- The documention (utm_doc.txt and ufit_doc.txt) has been revised profoundly
-- New example setup-files have been added, all old ones have been revised.
-
+### Repository of earlier UTM/UFIT versions
+UTM/UFIT versions until 20210327 (2021 March 27) are available at
+[ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/](ftp://tep:fu9dufa5@ftp.iac.es/idl_hans_lib/utm/)
+The UTM/UFIT distribution on that ftp server will not longer be updated and UTM versions posterior to 2021 March 27 will only be available here on github.
 
 
 
