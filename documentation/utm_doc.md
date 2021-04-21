@@ -91,13 +91,13 @@ The time and brightness values of the modeled lightcurve are
 	(in X,Y,Z coordinates) of the objects are printed, as well as
 	a list of the objects which are transiting.
 
-Note that there are setup-parameters (such as `plotorb`) which may override `dflag`, in order to turn on or off some specific types of displays. 
+Note that there are setup-parameters (such as `plotorb`) which may override `dflag`, in order to turn on or off some specific type of displays. 
 
 Independently of the setting of `dflag `, a final lightcurve is displayed in an interactive plot-window (this can be suppresed with  `plcflag -1` in a setupfile). 
 
 The symbols this plot are  (these depend on the `tflag`parameter, see below):  
-		- solid-line: transit-model (UTM-output for tflag =0,1)
-		- crosses: input light-curve (only for tflag=2,3)
+		- solid-line: transit-model (UTM-output for tflag =0,1)  
+		- crosses: input light-curve (only for tflag=2,3)  
 		- diamonds: residuals from 'data minus model' (for tflag=3) or the sum of 'data plus model' (tflag=2). If oflag=0 (output in system-luminosity) , the residuals are shifted to the off-eclipse luminosity in order to overlap with the data outside of eclipses. 
 
 
