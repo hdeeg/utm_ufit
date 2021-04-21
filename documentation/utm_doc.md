@@ -68,15 +68,14 @@ Start UTM from the IDL command line with:
 example: `utm,'6bodies.utm',3`
 
 where setupfile is the name of the setup file (this file is described
-below), and `dflag` takes one of the values 0-4.   
+below).  All initial parameters of UTM are red in from the setup file, except for `dflag`. Some more command line-parameters are available to UTM which are intended for calls to UTM within wrapper programs (e.g. ufit.pro) ; they are described in the Appendix. 
 
-All initial parameters of UTM are red in from the setup file, except for `dflag`. Some more command line-parameters are available to UTM which are intended for calls to UTM within wrapper programs (e.g. ufit.pro) ; they are described in the Appendix. 
-
-`dflag` controls the amount of information that is displayed:
+`dflag` may take one of the values 0-4 and controls the amount of information that is displayed:
 
 0: *None* (only the resulting lightcurve may be written to a file)
 
-1: *Printout of the lightcurve:*  The time and brightness values of the modeled lightcurve are 
+1: *Printout of the lightcurve:*  
+The time and brightness values of the modeled lightcurve are 
 	written to the terminal. The brightness may be displayed in three 
 	different ways, depending on 'oflag' (see description of setup 
 	files)
@@ -87,20 +86,19 @@ All initial parameters of UTM are red in from the setup file, except for `dflag`
 3: *Displays of bodies and orbits of the simulated system*  
 	The object's orbits are shown in three panels, with the objects in the x-y plane (the view as seen from the observer), the y-z plane (see from the 'side' with the observer to the right) and in the x-z plane (the view from 'above' onto the system). In the y-z and the x-z plane, the observer is indicated by a triangle. Also, for each luminous object, its current surface brightness distribution and eventual occultation is shown. The object's size is always scaled to fill the panel (Hence two stars of different size appear equal). 
 
-4: *Single step mode* 
+4: *Single step mode*   
 	After each time-step, the program stops (type .cont to continue) and the current positions 
 	(in X,Y,Z coordinates) of the objects are printed, as well as
 	a list of the objects which are transiting.
 
-Note that some setup-parameters (such as `plotorb`) may override the presets from `dflag`. 
+Note that there are setup-parameters (such as `plotorb`) which may override `dflag`, in order to turn on or off some specific types of displays. 
 
 Independently of the setting of `dflag `, a final lightcurve is displayed in an interactive plot-window (this can be suppresed with  `plcflag -1` in a setupfile). 
 
 The symbols this plot are  (these depend on the `tflag`parameter, see below):  
-		solid-line: transit-model (UTM-output for tflag =0,1)
-		crosses: input light-curve (only for tflag=2,3)
-		diamonds: residuals from 'data minus model' (for tflag=3) or the sum of 'data plus model' (tflag=2)
-If oflag=0 (output in system-luminosity) , the residuals are shifted to the off-eclipse luminosity in order to overlap with the data outside of eclipses. 
+		- solid-line: transit-model (UTM-output for tflag =0,1)
+		- crosses: input light-curve (only for tflag=2,3)
+		- diamonds: residuals from 'data minus model' (for tflag=3) or the sum of 'data plus model' (tflag=2). If oflag=0 (output in system-luminosity) , the residuals are shifted to the off-eclipse luminosity in order to overlap with the data outside of eclipses. 
 
 
 
