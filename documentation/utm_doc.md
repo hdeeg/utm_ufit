@@ -14,22 +14,18 @@ It calculates the resulting brightness, and displays graphical representations o
 Depending on the settings of the tflag parameter (see 'Setup file-, Sect. 2.1), UTM can be used to:
 
 - generate model lightcurves from scratch (tflag=0),with or without noise (parameter 'onoise') 
-
 - generate model lightcurves for given time-points (tflag=1), with or without noises
-
 - add models of planetary transits to given lightcurves (tflag=2). This option is useful to generate test-data based on light-curves of non-transiting stars.
-
 - subtract models of planetary transits from given lightcurves (tflag=3). This option returns the residual data - model.
-
 - in combination with UFIT (see ufit_doc.txt), UTM can be used to fit models to an observed lightcurve.
 
 UTM allows the definition of three general kinds of objects:
-* dark objects (planet, moon, ring)
-* luminous objects (star)
-* objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
+- dark objects (planet, moon, ring)
+- luminous objects (star)
+- objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
 
 
-### Functional description of UTM:
+### 1.1 Functional description of UTM:
 
 UTM will read all required input parameters from a setup-file, which is a text-file with parameter - value pairs.
 The setup contains the parameters of the bodies that are simulated and also all generic parameters that deviate from defaults.
@@ -53,70 +49,60 @@ The orbits for all objects can be freely positioned in a three-dimensional coord
 
 Plots of the system luminosity and animated displays of the occulted objects and of orbital positions can be shown in a customisable way.
 
-1.1 System requirements
------------------------
-UTM was initially written with IDL version 5.1 using object oriented methods. IDL 8.0 is required for the final interactive plot that is generated if plcflag is set to 1 (see parameters, below). 
+### 1.2 System requirements
 
-The minimum source files needed to run UTM are:
-  utm.pro
-  utm_ancil.pro
-(at least one setup file is needed as well)
+IDL 8.0 version 8 is required for the current version.
+
+The minimum source files needed to run UTM are:  
+  utm.pro  
+  utm_ancil.pro   
 
 The .pro files have to be in the current directory, or be in directories that are discoverable for IDL through the  IDL_PATH.
 
 
-2. Use of UTM
--------------
+## 2. Use of UTM
  
 Start UTM from the IDL command line with:
 
-IDL> utm,'setupfile',dflag
-example: utm,'6bodies.utm',3
+`IDL> utm,'setupfile',dflag`
+example: `utm,'6bodies.utm',3`
 
 where setupfile is the name of the setup file (this file is described
-below), and dflag takes one of the values 0-4.
-dflag controls the amount of information that is displayed:
+below), and `dflag` takes one of the values 0-4.   
 
-0: None (only the resulting lightcurve may be written to a file)
+All initial parameters of UTM are red in from the setup file, except for `dflag`. Some more command line-parameters are available to UTM which are intended for calls to UTM within wrapper programs (e.g. ufit.pro) ; they are described in the Appendix. 
 
-1: Printout of the lightcurve
-	The time and brightness values of the modeled lightcurve are 
+`dflag` controls the amount of information that is displayed:
+
+0: *None* (only the resulting lightcurve may be written to a file)
+
+1: *Printout of the lightcurve:*  The time and brightness values of the modeled lightcurve are 
 	written to the terminal. The brightness may be displayed in three 
 	different ways, depending on 'oflag' (see description of setup 
 	files)
 
-2: Plot of the lightcurve 
-	A plot of the last 100 time-points during UTM exection is shown. Its symbols are similar to the final
-	light-curve plot described below. Some warning messages are also shown only if dflag ≥2.
+2: *Plot of the lightcurve* A plot of the last 100 time-points during UTM exection is shown. Its symbols are similar to the final light-curve plot described below. 
+	Some warning messages are also shown only if dflag ≥2.
 
-3: Additional graphics of the planetary system, and of the luminous objects
-        Three panels show the objects in the x-y plane (the view as seen
-	from the observer), the y-z plane (see from the 'side' with the observer to the right) and in the 	x-z plane (the view from	'above' onto the system). 
-	In the y-z and the x-z plane, the observer is
-	indicated by a triangle.
+3: *Displays of bodies and orbits of the simulated system*  
+	The object's orbits are shown in three panels, with the objects in the x-y plane (the view as seen from the observer), the y-z plane (see from the 'side' with the observer to the right) and in the x-z plane (the view from 'above' onto the system). In the y-z and the x-z plane, the observer is indicated by a triangle. Also, for each luminous object, its current surface brightness distribution and eventual occultation is shown. The object's size is always scaled to fill the panel (Hence two stars of different size appear equal). 
 
-	Also, for each luminous object, its current surface
-	brightness distribution and eventual occultation is shown. The object's size is always 
-	scaled to fill the panel (Hence two stars of different size appear
-	equal). 
-
-4: Single step mode. Additionally positions of objects are printed. 
-	After each time-step, the program stops and the current positions 
+4: *Single step mode* 
+	After each time-step, the program stops (type .cont to continue) and the current positions 
 	(in X,Y,Z coordinates) of the objects are printed, as well as
 	a list of the objects which are transiting.
 
-Note that some setup-parameters (such as plotorb), if present, will override the presets from dflag. To disable these parameters, they need to be deleted or out-commented.  
+Note that some setup-parameters (such as `plotorb`) may override the presets from `dflag`. 
 
+Independently of the setting of `dflag `, a final lightcurve is displayed in an interactive plot-window (this can be suppresed with  `plcflag -1` in a setupfile). 
 
-A final lightcurve is displayed in an interactive plot-window for all settings of dflag (it can be suppresed setting  plcflag=0 in setupfile). The symbols this plot are:  
+The symbols this plot are  (these depend on the `tflag`parameter, see below):  
 		solid-line: transit-model (UTM-output for tflag =0,1)
-		crosses: input light-curve (only for tflag 2,3)
-		diamonds: residuals data minus model (for tflag=3) or sum of data plus model (tflag=2)
-	If oflag=0 (output in system-luminosity) , the residuals are shifted to the off-eclipse luminosity
-	in order to overlap with the data outside of eclipses. 
+		crosses: input light-curve (only for tflag=2,3)
+		diamonds: residuals from 'data minus model' (for tflag=3) or the sum of 'data plus model' (tflag=2)
+If oflag=0 (output in system-luminosity) , the residuals are shifted to the off-eclipse luminosity in order to overlap with the data outside of eclipses. 
 
 
-All initial parameters of UTM are red in from the setup file, except the command-line parameter dflag. Some more command line-parameters are available to UTM which are intended for calls to UTM within wrapper programs (e.g. ufit.pro) ; they are described in the Appendix. 
 
 
 
