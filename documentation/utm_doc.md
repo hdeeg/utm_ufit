@@ -80,7 +80,8 @@ The time and brightness values of the modeled lightcurve are
 	different ways, depending on 'oflag' (see description of setup 
 	files)
 
-2: *Plot of the lightcurve* A plot of the last 100 time-points during UTM exection is shown. Its symbols are similar to the final light-curve plot described below. 
+2: *Plot of the lightcurve* 
+A plot of the last 100 time-points during UTM exection is shown. Its symbols are similar to the final light-curve plot described below. 
 	Some warning messages are also shown only if dflag ≥2.
 
 3: *Displays of bodies and orbits of the simulated system*  
@@ -88,7 +89,7 @@ The time and brightness values of the modeled lightcurve are
 
 4: *Single step mode*   
 	After each time-step, the program stops (type .cont to continue) and the current positions 
-	(in X,Y,Z coordinates) of the objects are printed, as well as
+	(in X,Y,Z coordinates) of the objects are printed, together with
 	a list of the objects which are transiting.
 
 Note that there are setup-parameters (such as `plotorb`) which may override `dflag`, in order to turn on or off some specific type of displays. 
