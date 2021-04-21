@@ -1,5 +1,5 @@
 # UTM
-A universal transit modeler
+A universal transit modeller
 
 H.J. Deeg, 27 Mar 2020  (version history at end) 
 UTM Version described:  utm.pro of 18 Mar 2021 
@@ -13,20 +13,20 @@ It calculates the resulting brightness, and displays graphical representations o
 
 Depending on the settings of the tflag parameter (see 'Setup file-, Sect. 2.1), UTM can be used to:
 
-* generate model lightcurves from scratch (tflag=0),with or without noise (parameter 'onoise') 
+- generate model lightcurves from scratch (tflag=0),with or without noise (parameter 'onoise') 
 
-* generate model lightcurves for given time-points (tflag=1), with or without noises
+- generate model lightcurves for given time-points (tflag=1), with or without noises
 
-* add models of planetary transits to given lightcurves (tflag=2). This option is useful to generate test-data based on light-curves of non-transiting stars.
+- add models of planetary transits to given lightcurves (tflag=2). This option is useful to generate test-data based on light-curves of non-transiting stars.
 
-* subtract models of planetary transits from given lightcurves (tflag=3). This option returns the residual data - model.
+- subtract models of planetary transits from given lightcurves (tflag=3). This option returns the residual data - model.
 
-* in combination with UFIT (see ufit_doc.txt), UTM can be used to fit models to an observed lightcurve.
+- in combination with UFIT (see ufit_doc.txt), UTM can be used to fit models to an observed lightcurve.
 
 UTM allows the definition of three general kinds of objects:
-*dark objects (planet, moon, ring)
-*luminous objects (star)
-*objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
+* dark objects (planet, moon, ring)
+* luminous objects (star)
+* objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
 
 
 ### Functional description of UTM:
@@ -36,8 +36,7 @@ The setup contains the parameters of the bodies that are simulated and also all 
 For each body (star, planet, ring..), a computational object is then generated, that describes its kind, size in the sky-plane, orbital parameters, actual position, together with type-specific parameters, such as limb-darkening coefficients for stars, or the inclination for rings. In the default operational mode of UTM, a pixelized 2D representation of the transmittance of each object is also generated, and bright objects (emitters) get a 2D representation of their luminance towards the observer. 
 The objects' orbits are prescribed by Keplerian parameters that are supplied from the setup-file, with defaults that simplify their use. Keplerian parameters are used since they are independent for each orbiting object. More interdependent parameterisations can be obtained through user-supplied 'preprocessor' codelets, which -for example- may replace a planet's orbital inclination by its impact parameter on the central star. UTM is not dependent on the use of any specific units for length, time, luminosity, but units may be declared as input parameters. This is useful for the labelling of graphical output, but it permits also the use of relative units. For example, we may replace a planet's absolute orbital semimajor half-axis 'a' by its relative one, a/R*, by setting R* (the central star's radius) as the unit for length. With the appropriate unit choices and preprocessor codelets (examples are given in the /example directory of the UTM/UFIT distro), UTM can be adapted to any of the common parameterizations used in the simulation of planetary transits or stellar eclipses.
 
-In UTM's main loop, the program will step through a series of time values or epochs. These epochs can be red from an input file (usually a light-curve for which a simulation is to be produced), but equidistant epochs can also be generated internally from parameters in the set-up file.  
-At each epoch, the objects' positions in a 3D coordinate system are calculated from their Keplerian orbital parameters. If  2D representations have been generated, they lie in the sky plane. UTM checks then if any of the emitters is overlapped by any other object. If occultations occur, they are broken down into a hierarchy of mutual occultations between two objects, where the one in the background is always an emitter. UTM starts with the mutual occultation in which both the emitter and the occulter are closest to the observer, and calculates the remaining brightness. If the same emitter is occulted by more objects, remaining brightnesses after each mutual occultation are calculated, until arriving at the occulter that is closest to the emitter. If there are further emitters in the system, UTM calculates the occulted fluxes for the next emitter at increasing distance from the observer, starting again with the occulter that is closest to the observer. Following this procedure, multi-body occultations of arbitrary complexity can be resolved. 
+In UTM's main loop, the program will step through a series of time values or epochs. These epochs can be red from an input file (usually a light-curve for which a simulation is to be produced), but equidistant epochs can also be generated internally from parameters in the set-up file. At each epoch, the objects' positions in a 3D coordinate system are calculated from their Keplerian orbital parameters. If  2D representations have been generated, they lie in the sky plane. UTM checks then if any of the emitters is overlapped by any other object. If occultations occur, they are broken down into a hierarchy of mutual occultations between two objects, where the one in the background is always an emitter. UTM starts with the mutual occultation in which both the emitter and the occulter are closest to the observer, and calculates the remaining brightness. If the same emitter is occulted by more objects, remaining brightnesses after each mutual occultation are calculated, until arriving at the occulter that is closest to the emitter. If there are further emitters in the system, UTM calculates the occulted fluxes for the next emitter at increasing distance from the observer, starting again with the occulter that is closest to the observer. Following this procedure, multi-body occultations of arbitrary complexity can be resolved. 
 
 The calculations of the mutual occultations' brightnesses are performed either in a pixelized or in an analytical mode, depending on the circumstances (described in detail in Sect. 2.4):
 
