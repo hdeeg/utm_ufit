@@ -64,7 +64,7 @@ The .pro files have to be in the current directory, or be in directories that ar
  
 Start UTM from the IDL command line with:
 
-`IDL> utm,'setupfile',dflag`
+`IDL> utm,'setupfile',dflag`   
 example: `utm,'6bodies.utm',3`
 
 where setupfile is the name of the setup file (this file is described
@@ -94,7 +94,7 @@ A plot of the last 100 time-points during UTM exection is shown. Its symbols are
 
 Note that there are setup-parameters (such as `plotorb`) which may override `dflag`, in order to turn on or off some specific type of displays. 
 
-Independently of the setting of `dflag `, a final lightcurve is displayed in an interactive plot-window (this can be suppresed with  `plcflag -1` in a setupfile). 
+Independently of the setting of `dflag`, a final lightcurve is displayed in an interactive plot-window (this can be suppresed with  `plcflag=-1` in a setupfile). 
 
 The symbols this plot are  (these depend on the `tflag`parameter, see below):  
 		- solid-line: transit-model (UTM-output for tflag =0,1)  
