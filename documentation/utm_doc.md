@@ -1,38 +1,35 @@
-UTM
+# UTM
 A universal transit modeler
 
 H.J. Deeg, 27 Mar 2020  (version history at end) 
 UTM Version described:  utm.pro of 18 Mar 2021 
 
 
-1. General Description
+## 1. General Description
 ———————————
 
-UTM is a modeller for all kinds of configurations between any
-number and kind of objects, such as stars, planets, moons,.. 
+UTM is a modeller for all kinds of configurations between any number and kind of objects, such as stars, planets, moons,..  
 It calculates the resulting brightness, and displays graphical representations of the transit-configurations. For an overview see the paper by Deeg 2009 that is included in the UTM distribution (file Deeg_UTM_proc_Boston08_2.pdf ). For citing UTM, see Appendix at end.
 
 Depending on the settings of the tflag parameter (see 'Setup file-, Sect. 2.1), UTM can be used to:
 
--generate model lightcurves from scratch (tflag=0),with or without
- noise (parameter 'onoise') 
+* generate model lightcurves from scratch (tflag=0),with or without noise (parameter 'onoise') 
 
--generate model lightcurves for given time-points (tflag=1), with or 
- without noises
+* generate model lightcurves for given time-points (tflag=1), with or without noises
 
--add models of planetary transits to given lightcurves (tflag=2). This option is useful to generate test-data based on light-curves of non-transiting stars.
+* add models of planetary transits to given lightcurves (tflag=2). This option is useful to generate test-data based on light-curves of non-transiting stars.
 
--subtract models of planetary transits from given lightcurves (tflag=3). This option returns the residual data - model.
+* subtract models of planetary transits from given lightcurves (tflag=3). This option returns the residual data - model.
 
-- in combination with UFIT (see ufit_doc.txt), UTM can be used to fit models to an observed lightcurve.
+* in combination with UFIT (see ufit_doc.txt), UTM can be used to fit models to an observed lightcurve.
 
 UTM allows the definition of three general kinds of objects:
--dark objects (planet, moon, ring)
--luminous objects (star)
--objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
+*dark objects (planet, moon, ring)
+*luminous objects (star)
+*objects that are neither and do not cause eclipses (point). They are intended mainly to define positons of barycenters in hierachical systems.
 
 
-Functional description of UTM:
+### Functional description of UTM:
 
 UTM will read all required input parameters from a setup-file, which is a text-file with parameter - value pairs.
 The setup contains the parameters of the bodies that are simulated and also all generic parameters that deviate from defaults.
@@ -239,7 +236,9 @@ finestep   bin,1       #finestepping: if set, overlapping regions in arrays of o
 
 
 preproc  filename,0   #program to prepocess setupfile (without .pro); 
-			  #outcomment or 0 for none (See Sect.2.3)saveprepset     bin,0    #1: save preprocessed setupfile, 0: don't
+			  #outcomment or 0 for none (See Sect.2.3)
+saveprepset     bin,0    #1: save preprocessed setupfile, 0: don't
+
 limblaw {lin,quad,pmquad,usquad,root},lin  # limbdarkening law of luminous objects. The options are as follows, with
 				#limbd and limbd2 being input parameters in setup-file (see below):
   				#lin:  linear law, I(μ) = I(1)(1 − u(1 − mu))  ; limbd :=u  
@@ -318,7 +317,8 @@ Ninclin  double,90       #inclination of orbit in degree; 0=face-on, 90=edge-on
 				    #(for defin. see 'coordinate system')
 Necc   {0-1}float,0             #orbital eccentricty
 Nomega  float,270    #arg. of periapsis or periastron angle in degree (see 'coordinate system') 
-Nsqrtecsin  float    #sqrt(ecc)*sin(omega), alternative overriding params for ecc, omega Nsqrteccos  float    #sqrt(ecc)*cos(omega)
+Nsqrtecsin  float    #sqrt(ecc)*sin(omega), alternative overriding params for ecc, omega 
+Nsqrteccos  float    #sqrt(ecc)*cos(omega)
 
 Nomegadot  float,0    #change of omega in degree per time-unit (see 'coordinate system') 
 
@@ -434,7 +434,8 @@ The preprocessor, named 'filename.pro', needs to be in the directory of the setu
 
 The preprocessor is written in usual IDL code, but its layout should follow the following simple scheme:
 
-pro example_prep    ;preprocessing code for UTM	;read parameter's values from setup-file
+pro example_prep    ;preprocessing code for UTM
+	;read parameter's values from setup-file
 	inval1= double(parasign('1inpar'))  ;1inpar and 2inpar are parameters in setupfile
 	inval2= double (parasign('2inpar'))  
 	;perform some operation on these values
@@ -702,7 +703,8 @@ Specific setup parameters for the 'extocc' type are
 
 Ntype    extocc     specifies the extocc object type
 Nextname filename  #full name of the .sav file with the 2D transmissivity array
-Nsizex  float      #length of object in X direction,  in length-units from 'lunit'Nsizey  float      #lenght in Y
+Nsizex  float      #length of object in X direction,  in length-units from 'lunit'
+Nsizey  float      #lenght in Y
 Furthermore, the usual orbital parameters for period, epoch, distance, etc (see Sect. 2.2) can be specified. 
 The gsize parameter does not affect the 'extocc' type
 
@@ -738,4 +740,4 @@ Version history
 26mar2021 adding of analytical calculation and external objects
 27mar2021 improved functional description of UTM
  
-
+
